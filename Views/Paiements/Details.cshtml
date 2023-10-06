@@ -1,0 +1,54 @@
+﻿@model GogoDriverWeb.Models.Paiement
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Paiement</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MomtantPaiement)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MomtantPaiement)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Telephone)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Telephone)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DatePaiement)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DatePaiement)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EtatPaiement)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EtatPaiement)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Facturation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Facturation)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ModePaiementIdNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ModePaiementIdNavigation.ModePaiementId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.PaiementId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

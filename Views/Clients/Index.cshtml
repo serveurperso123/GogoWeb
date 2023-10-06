@@ -1,0 +1,91 @@
+﻿@model IEnumerable<GogoDriverWeb.Models.Course>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="pagetitle">
+    <h1>Les courses</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"> <a asp-action="Index">Index</a></li>
+            <li class="breadcrumb-item">Les courses</li>
+            <li class="breadcrumb-item active">Liste</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<section class="section">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Liste courses</h5>
+
+                    <!-- Default Table -->
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.DateCourse)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.HeureCourse)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.EtatCourse)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Destination)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Position)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.VehiculeIdNavigation)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DateCourse)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.HeureCourse)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.EtatCourse)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Destination)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Position)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.VehiculeIdNavigation.VehiculeId)
+                                    </td>
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@item.CourseId"><i class="fa fa-edit" aria-hidden="true"></i></a> |
+                                        <a asp-action="Details" asp-route-id="@item.CourseId"><i class="fa fa-list" aria-hidden="true"></i></a> |
+                                        <a asp-action="Delete" asp-route-id="@item.CourseId"><i class="fa fa-trash" aria-hidden="true"></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <!-- End Default Table Example -->
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</section>

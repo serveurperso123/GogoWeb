@@ -1,0 +1,47 @@
+﻿@model GogoDriverWeb.Models.Plainte
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Plainte</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="PlainteId" class="control-label"></label>
+                <input asp-for="PlainteId" class="form-control" />
+                <span asp-validation-for="PlainteId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GogoWebUserId" class="control-label"></label>
+                <select asp-for="GogoWebUserId" class="form-control" asp-items="ViewBag.GogoWebUserId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="LibellePlainte" class="control-label"></label>
+                <input asp-for="LibellePlainte" class="form-control" />
+                <span asp-validation-for="LibellePlainte" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DatePlainte" class="control-label"></label>
+                <input asp-for="DatePlainte" class="form-control" />
+                <span asp-validation-for="DatePlainte" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,66 @@
+﻿@model GogoDriverWeb.Models.Reservation
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Reservation</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ReservationId" class="control-label"></label>
+                <input asp-for="ReservationId" class="form-control" />
+                <span asp-validation-for="ReservationId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GogoWebUserId" class="control-label"></label>
+                <select asp-for="GogoWebUserId" class="form-control" asp-items="ViewBag.GogoWebUserId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="TypeReservationId" class="control-label"></label>
+                <select asp-for="TypeReservationId" class ="form-control" asp-items="ViewBag.TypeReservationId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateReservation" class="control-label"></label>
+                <input asp-for="DateReservation" class="form-control" />
+                <span asp-validation-for="DateReservation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HeureDebut" class="control-label"></label>
+                <input asp-for="HeureDebut" class="form-control" />
+                <span asp-validation-for="HeureDebut" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HeureFin" class="control-label"></label>
+                <input asp-for="HeureFin" class="form-control" />
+                <span asp-validation-for="HeureFin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Position" class="control-label"></label>
+                <input asp-for="Position" class="form-control" />
+                <span asp-validation-for="Position" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NbrePassages" class="control-label"></label>
+                <input asp-for="NbrePassages" class="form-control" />
+                <span asp-validation-for="NbrePassages" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
