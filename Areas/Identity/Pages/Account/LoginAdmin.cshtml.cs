@@ -117,7 +117,7 @@ namespace GogoWeb.Areas.Identity.Pages.Account
                 {
                     _logger.LogInformation("User logged in.");
                     
-                            return RedirectToAction("HomeAdmin", "Home");
+                     return RedirectToAction("HomeAdmin", "Home");
                          
                 }
 

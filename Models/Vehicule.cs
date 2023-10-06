@@ -6,12 +6,11 @@ namespace GogoDriverWeb.Models;
 
 public partial class Vehicule
 {
-    public string VehiculeId { get; set; } = null!;
+    public string? VehiculeId { get; set; } 
 
-    public string TypevehiculeId { get; set; } = null!;
+    public string? TypevehiculeId { get; set; } 
 
-    public string TypeReservationId { get; set; } = null!;
-
+    public string? TypeReservationId { get; set; } 
     public string? NomVehicule { get; set; }
 
     public string? Immatriculation { get; set; }

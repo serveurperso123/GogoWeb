@@ -5,7 +5,7 @@ namespace GogoDriverWeb.Models;
 
 public partial class Course
 {
-    public string CourseId { get; set; } = null!;
+    public string? CourseId { get; set; } 
 
     public string VehiculeId { get; set; } = null!;
 

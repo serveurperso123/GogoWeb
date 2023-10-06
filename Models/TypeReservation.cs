@@ -5,7 +5,7 @@ namespace GogoDriverWeb.Models;
 
 public partial class TypeReservation
 {
-    public string TypeReservationId { get; set; } = null!;
+    public string? TypeReservationId { get; set; } 
 
     public string? NomType { get; set; }
 

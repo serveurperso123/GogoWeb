@@ -1,5 +1,5 @@
 ﻿@page
-@model RegisterModel
+@model RegisterChauffeurModel
 @{
     ViewData["Title"] = "Register";
 }
@@ -52,6 +52,19 @@
                 <input asp-for="Input.Prenom" class="form-control" autocomplete="new-password" aria-required="true" placeholder="prenom" />
 
                 <span asp-validation-for="Input.Prenom" class="text-danger"></span>
+            </div>
+
+            <div class="col-12">
+                <label asp-for="Input.Cni">Cni</label>
+                <input asp-for="Input.Cni" class="form-control" autocomplete="new-password" aria-required="true" placeholder="Cni" />
+
+                <span asp-validation-for="Input.Cni" class="text-danger"></span>
+            </div>
+            <div class="col-12">
+                <label asp-for="Input.NumPermi">Numero permis</label>
+                <input asp-for="Input.NumPermi" class="form-control" autocomplete="new-password" aria-required="true" placeholder="Numerp Permis" />
+
+                <span asp-validation-for="Input.NumPermi" class="text-danger"></span>
             </div>
 
             <div class="col-12">

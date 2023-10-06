@@ -54,7 +54,7 @@ namespace GogoWeb.Controllers
         {
             ViewData["PersonneId"] = new SelectList(_context.Set<GogoWebUser>(), "Id", "Id");
             ViewData["TypeReservationId"] = new SelectList(_context.TypeReservations, "TypeReservationId", "TypeReservationId");
-            return View();
+            return RedirectToAction("HomeClient", "Home");
         }
 
         // POST: Reservations/Create

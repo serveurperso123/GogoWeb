@@ -1,28 +1,35 @@
-﻿@model IEnumerable<GogoDriverWeb.Models.So>
+﻿@using GogoWeb.Areas.Identity.Data;
+@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<GogoWebUser> SignInManager
+@inject UserManager<GogoWebUser> UserManager
+@model IEnumerable<GogoDriverWeb.Models.So>
 
 @{
     ViewData["Title"] = "Index";
 }
 <div class="pagetitle">
-    <h1>Les SOS</h1>
+    <h1>Les Urgences</h1>
     <nav>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"> <a asp-action="Index">Index</a></li>
-            <li class="breadcrumb-item">Les SOS</li>
+            <li class="breadcrumb-item">Les Urgences</li>
             <li class="breadcrumb-item active">Liste</li>
         </ol>
     </nav>
 </div><!-- End Page Title -->
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+@if (SignInManager.IsSignedIn(User) && User.IsInRole("Chauffeur") || User.IsInRole("Passager"))
+{
+    <p>
+        <a asp-action="Create">Nouveau</a>
+    </p>
+}
 <section class="section">
     <div class="row">
         <div class="col-lg-12">
 
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Liste SOS</h5>
+                    <h5 class="card-title">Liste Urgences</h5>
 
                     <!-- Default Table -->
                     <table class="table">
@@ -35,7 +42,7 @@
                                     @Html.DisplayNameFor(model => model.Description)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.PersonneIdNavigation)
+                                    Passager
                                 </th>
                                 <th></th>
                             </tr>

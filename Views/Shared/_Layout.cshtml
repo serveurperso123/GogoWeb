@@ -32,7 +32,7 @@
 
     <!-- Template Main CSS File -->
     <link href="~/assets/css/style.css" rel="stylesheet">
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+@*    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false" type="text/javascript"></script>
     <script>
         var mapcode;
@@ -62,7 +62,7 @@
             });
         }
         google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
+    </script>*@
     <!-- =======================================================
     * Template Name: NiceAdmin - v2.5.0
     * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
@@ -288,6 +288,12 @@
 
     </header><!-- End Header -->
     <!-- ======= Sidebar ======= -->
+    <style>
+        .sidebar {
+            background-image: url('~/images/hero-bg2.png');
+            background-color: #FFF633;
+        }
+    </style>
     <aside id="sidebar" class="sidebar">
 
         <ul class="sidebar-nav" id="sidebar-nav">
@@ -326,7 +332,7 @@
             </li><!-- End Components Nav -->
             <li class="nav-item">
                 <a class="nav-link collapsed" asp-area="" asp-controller="Paiements" asp-action="Index">
-                    <i class="bi bi-menu-button-wide"></i><span>Les Paiement</span>
+                    <i class="bi bi-menu-button-wide"></i><span>Les Paiements</span>
                 </a>
             </li><!-- End Components Nav -->
             <li class="nav-item">
@@ -340,14 +346,42 @@
 {
             <li class="nav-item">
                 <a class="nav-link collapsed" asp-area="" asp-controller="Courses" asp-action="Index">
-                    <i class="bi bi-menu-button-wide"></i><span>Historique courses</span>
+                    <i class="bi bi-menu-button-wide"></i><span>les courses</span>
                 </a>
             </li><!-- End Components Nav -->
+                <li class="nav-item">
+                    <a class="nav-link collapsed" asp-area="" asp-controller="Vehicules" asp-action="Index">
+                        <i class="bi bi-menu-button-wide"></i><span>Mes Vehicules</span>
+                    </a>
+                </li>
+
+                <!-- End Components Nav -->
             <li class="nav-item">
                 <a class="nav-link collapsed" asp-area="" asp-controller="Reservations" asp-action="Index">
                     <i class="bi bi-menu-button-wide"></i><span>Mes reservations</span>
                 </a>
             </li><!-- End Components Nav -->
+                <li class="nav-item">
+                    <a class="nav-link collapsed" asp-area="" asp-controller="Plaintes" asp-action="Index">
+                        <i class="bi bi-menu-button-wide"></i><span>Mes Plaintes</span>
+                    </a>
+                </li>
+
+                <!-- End Components Nav -->
+                <li class="nav-item">
+                    <a class="nav-link collapsed" asp-area="" asp-controller="Paiements" asp-action="Index">
+                        <i class="bi bi-menu-button-wide"></i><span>Les Paiements</span>
+                    </a>
+                </li>
+
+                <!-- End Components Nav -->
+                <li class="nav-item">
+                    <a class="nav-link collapsed" asp-area="" asp-controller="Soes" asp-action="Index">
+                        <i class="bi bi-menu-button-wide"></i><span>Mes Urgences</span>
+                    </a>
+                </li>
+
+                <!-- End Components Nav -->
             }
 
 
@@ -365,19 +399,19 @@
                         <i class="bi bi-menu-button-wide"></i><span>Mes reservations</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" asp-area="" asp-controller="Plaintes" asp-action="Index">
+                        <i class="bi bi-menu-button-wide"></i><span>Mes Plaintes</span>
+                    </a>
+                </li>
 
                 <!-- End Components Nav -->
                 <li class="nav-item">
-                    <a class="nav-link collapsed" asp-area="" asp-controller="Reservations" asp-action="Index">
-                        <i class="bi bi-menu-button-wide"></i><span>Mes reservations</span>
+                    <a class="nav-link collapsed" asp-area="" asp-controller="Soes" asp-action="Index">
+                        <i class="bi bi-menu-button-wide"></i><span>Mes Urgences</span>
                     </a>
                 </li>
-                <!-- End Components Nav -->
-                <li class="nav-item">
-                    <a class="nav-link collapsed" asp-area="" asp-controller="Reservations" asp-action="Index">
-                        <i class="bi bi-menu-button-wide"></i><span>Mes reservations</span>
-                    </a>
-                </li>
+
 
                 <!-- End Components Nav -->
             }

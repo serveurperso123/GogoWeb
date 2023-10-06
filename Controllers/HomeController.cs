@@ -24,17 +24,17 @@ namespace GogoWeb.Controllers
             return View();
         }
 
-        public async Task<IActionResult> HomeAdmin()
+        public IActionResult HomeAdmin()
         {
             return View();
         }
 
-        public async Task<IActionResult> HomeChauffeur()
+        public IActionResult HomeChauffeur()
         {
             return View();
         }
 
-        public async Task<IActionResult> HomeClient()
+        public IActionResult HomeClient()
         {
             return View();
         }

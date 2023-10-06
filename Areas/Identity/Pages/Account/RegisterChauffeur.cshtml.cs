@@ -22,7 +22,7 @@ using Microsoft.Extensions.Logging;
 
 namespace GogoWeb.Areas.Identity.Pages.Account
 {
-    public class RegisterModel : PageModel
+    public class RegisterChauffeurModel : PageModel
     {
         private readonly SignInManager<GogoWebUser> _signInManager;
         private readonly UserManager<GogoWebUser> _userManager;
@@ -32,12 +32,12 @@ namespace GogoWeb.Areas.Identity.Pages.Account
         private readonly IEmailSender _emailSender;
         private readonly RoleManager<IdentityRole> _roleManager;
 
-        public RegisterModel(
+        public RegisterChauffeurModel(
             UserManager<GogoWebUser> userManager,
             IUserStore<GogoWebUser> userStore,
             SignInManager<GogoWebUser> signInManager,
             ILogger<RegisterModel> logger,
-            RoleManager<IdentityRole> roleManager,
+             RoleManager<IdentityRole> roleManager,
             IEmailSender emailSender)
         {
             _userManager = userManager;
@@ -88,7 +88,7 @@ namespace GogoWeb.Areas.Identity.Pages.Account
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
             [Required]
-            [StringLength(100, ErrorMessage = "le {0} doit avoir minimum {2} au max {1} caracteres.", MinimumLength = 6)]
+            [StringLength(100, ErrorMessage = "Le {0} doit avoir minimum {2} et maximum {1} caracteres.", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Mot de passe")]
             public string Password { get; set; }
@@ -99,16 +99,24 @@ namespace GogoWeb.Areas.Identity.Pages.Account
             /// </summary>
             [DataType(DataType.Password)]
             [Display(Name = "Confirmez mot de passe")]
-            [Compare("Password", ErrorMessage = "le mot de passe et la confirmation ne correspondent pas.")]
+            [Compare("Password", ErrorMessage = "Le mot de passe ne correspond pas à la confirmation.")]
             public string ConfirmPassword { get; set; }
 
-            [StringLength(50, ErrorMessage = "le {0} doit avoir minimum {2}  au max {1} caracteres.", MinimumLength = 6)]
+            [StringLength(50, ErrorMessage = "Le {0} doit avoir minimum {2} et maximum {1} caracteres.", MinimumLength = 6)]
             [Display(Name = "Nom")]
             public string Nom { get; set; }
 
-            [StringLength(50, ErrorMessage = "le {0} doit avoir minimum {2}  au max {1} caracteres.", MinimumLength = 6)]
+            [StringLength(50, ErrorMessage = "Le{0} doit avoir minimum {2} et maximum {1} caracteres.", MinimumLength = 6)]
             [Display(Name = "Prenom")]
             public string Prenom { get; set; }
+
+            [StringLength(50, ErrorMessage = "Le {0} doit avoir minimum {2} et maximum {1} caracteres.", MinimumLength = 6)]
+            [Display(Name = "Cni")]
+            public string Cni { get; set; }
+
+            [StringLength(50, ErrorMessage = "Le{0} doit avoir minimum {2} et maximum {1} caracteres.", MinimumLength = 6)]
+            [Display(Name = "NumPermi")]
+            public string NumPermi { get; set; }
         }
 
 
@@ -132,7 +140,7 @@ namespace GogoWeb.Areas.Identity.Pages.Account
 
                 if (result.Succeeded)
                 {
-                    var defaultrole = _roleManager.FindByNameAsync("Passager").Result;
+                    var defaultrole = _roleManager.FindByNameAsync("Chauffeur").Result;
 
                     if (defaultrole != null)
                     {
@@ -141,27 +149,27 @@ namespace GogoWeb.Areas.Identity.Pages.Account
 
                     _logger.LogInformation("User created a new account with password.");
 
-                    //var userId = await _userManager.GetUserIdAsync(user);
-                    //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    //code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-                    //var callbackUrl = Url.Page(
-                    //    "/Account/ConfirmEmail",
-                    //    pageHandler: null,
-                    //    values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
-                    //    protocol: Request.Scheme);
+                    var userId = await _userManager.GetUserIdAsync(user);
+                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+                    var callbackUrl = Url.Page(
+                        "/Account/ConfirmEmail",
+                        pageHandler: null,
+                        values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
+                        protocol: Request.Scheme);
 
-                    //await _emailSender.SendEmailAsync(Input.Email, "Confirmez votre email",
-                    //    $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
+                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
-                    //if (_userManager.Options.SignIn.RequireConfirmedAccount)
-                    //{
-                    //    return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
-                    //}
-                    //else
-                   // {
+                    if (_userManager.Options.SignIn.RequireConfirmedAccount)
+                    {
+                        return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
+                    }
+                    else
+                    {
                         await _signInManager.SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("HomeClient", "Home");
-                    // }
+                        return LocalRedirect(returnUrl);
+                    }
                 }
                 foreach (var error in result.Errors)
                 {

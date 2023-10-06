@@ -5,7 +5,7 @@ namespace GogoDriverWeb.Models;
 
 public partial class TypeVehicule
 {
-    public string TypevehiculeId { get; set; } = null!;
+    public string? TypevehiculeId { get; set; } 
 
     public string? Standard { get; set; }
 

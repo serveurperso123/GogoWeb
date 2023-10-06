@@ -52,7 +52,7 @@ namespace GogoWeb.Controllers
         public IActionResult Create()
         {
             ViewData["VehiculeId"] = new SelectList(_context.Vehicules, "VehiculeId", "VehiculeId");
-            return View();
+            return RedirectToAction("HomeClient", "Home"); ;
         }
 
         // POST: Courses/Create

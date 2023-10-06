@@ -58,11 +58,17 @@ namespace GogoWeb.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TypevehiculeId,Standard,Vip")] TypeVehicule typeVehicule)
+        public async Task<IActionResult> Create(TypeVehicule typeVehicule)
         {
+            var tv = new TypeVehicule
+            {
+                Vip = typeVehicule.Vip,
+                Standard = typeVehicule.Standard
+        };
+
             if (ModelState.IsValid)
             {
-                _context.Add(typeVehicule);
+                _context.Add(tv);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
