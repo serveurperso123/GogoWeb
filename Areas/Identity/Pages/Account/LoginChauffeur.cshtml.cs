@@ -18,12 +18,12 @@ using Microsoft.Extensions.Logging;
 
 namespace GogoWeb.Areas.Identity.Pages.Account
 {
-    public class LoginModel : PageModel
+    public class LoginChauffeurModel : PageModel
     {
         private readonly SignInManager<GogoWebUser> _signInManager;
-        private readonly ILogger<LoginModel> _logger;
+        private readonly ILogger<LoginChauffeurModel> _logger;
 
-        public LoginModel(SignInManager<GogoWebUser> signInManager, ILogger<LoginModel> logger)
+        public LoginChauffeurModel(SignInManager<GogoWebUser> signInManager, ILogger<LoginChauffeurModel> logger)
         {
             _signInManager = signInManager;
             _logger = logger;
@@ -116,19 +116,11 @@ namespace GogoWeb.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
-                    if(User.IsInRole("Admin"))
-                    {
-                        return RedirectToAction("HomeAdmin", "Home");
-                    }
-                    else if(User.IsInRole("Passager"))
-                    {
-                        return RedirectToAction("HomeClient", "Home");
-                    }
-                    else if(User.IsInRole("Chauffeur"))
-                    {
-                        return RedirectToAction("HomeChauffeur", "Home");
-                    }
+                    
+                            return RedirectToAction("HomeChauffeur", "Home");
+                         
                 }
+
                 if (result.RequiresTwoFactor)
                 {
                     return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = Input.RememberMe });
